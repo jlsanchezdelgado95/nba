@@ -1,0 +1,43 @@
+.fondoPantalla{
+    width:1200px;
+    height: 800px;
+    margin: 0 auto;
+}
+p{
+    color: hsl(0, 0%, 100%);
+    text-align: left;
+    font-size: 18px;
+}
+h3{
+    color:white;
+    text-align: center;
+}
+h1,h2{
+    color: white;
+    text-align: center;
+}
+img{
+    margin: 0 auto;
+    display: block;
+}
+div{
+    display: inline-block;
+}
+.contenedor{
+    display: inline-block;
+    background: white;
+    color: white;
+    padding: 10px;
+    overflow: hidden;
+}
+.izquierda{
+    color: white;
+    top:100px;
+    width: 200px;
+}
+.derecha{
+    color: white;
+    top:100px;
+    left:220px;
+    right: 0px;
+}

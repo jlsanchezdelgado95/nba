@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+</head>
+<body>
+    <?php
+        include "menu.php";
+    ?>
+    <div id="contenido">
+        <form enctype="multipart/form-data" action="/cambiarAvatar" method="POST">
+        <input type="hidden" name="MAX_FILE_SIZE" value="30000"/>
+</br>
+</br>
+</br>
+        Subir esta imagen: <input name="imagen_usuario" type="file"/>
+        <input type="submit" value="Subir imagen"/>
+        </form>
+    </div>
+</body>
+</html>

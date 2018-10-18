@@ -1,0 +1,22 @@
+.fondoPantalla{
+    width:1200px;
+    height: 800px;
+    margin: 0 auto;
+}
+p{
+    color: hsl(0, 0%, 100%);
+    text-align: left;
+    font-size: 18px;
+}
+h3{
+    color:white;
+    text-align: center;
+}
+h1{
+    color: white;
+    text-align: center;
+}
+img{
+    margin: 0 auto;
+    display: block;
+}
