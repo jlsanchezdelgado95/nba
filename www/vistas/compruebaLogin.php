@@ -10,22 +10,19 @@ $i;
 $finalizado = false;
 for ($i = 0; $i < $tamanyo; $i++) {
     $troceado = explode(";", $array[$i]);
-    for ($j = 0; $j < sizeof($troceado); $j++) {
-        if ($troceado[$j] == $user && $troceado[$j + 1] == $md5) {
+        if ($troceado[0] == $user && $troceado[1] == $md5) {
             $i = $tamanyo;
-            $img = $troceado[$j + 2];
+            $img = $troceado[2];
             $_SESSION["avatar"] = $img;
             setcookie("sesion", $img, time() + (86400 * 7), "/");
             //sleep(5);
             /*echo " <script language='javascript'>alert('Bienvenid@' . $troceado[$j]);</script>";*/
             header("location: /");
-
         } /*else {
             //sleep(5);
             echo "<script language='javascript'>alert('Error con el usuario o con la contraseña');</script>";
             header("location: /error.php");
         }*/
-    }
     if (($i + 1) == $tamanyo) {
         $finalizado = true;
     }
