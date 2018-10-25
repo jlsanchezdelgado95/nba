@@ -1,14 +1,33 @@
 <?php
-$routes = include "routes.php";
 session_start();
-$page = null;
-$matchesParams = array();
+
+//conexión a la bbdd
+try {
+    $mysql = new PDO("mysql:dbname=nba;host=localhost", "usuario", "usuario");
+    $mysql->exec("set names utf8");
+} catch (PDOException $e) {
+    echo "<p>Error: No se puede conectar a la base de datos de servidor.</p>\n";
+    echo $e;
+    exit();
+}
 
 function compruebaLogin(){
-    include_once("compruebaLogin.php");
-    $sesion = $_COOKIE['sesion'];
+    if (isset($_COOKIE["sesion"])) {
+        $usuario = explode(";", $_COOKIE["sesion"]);
+        $_SESSION["id"] = $usuario[0];
+        $_SESSION["extensionAvatar"] = $usuario[1];
+        $_SESSION["logeado"] = true;
+    } else {
+        unset($_SESSION["usuario"]);
+        unset($_SESSION["avatar"]);
+        $_SESSION["logeado"] = false;
+    }
 }
 compruebaLogin();
+
+$routes = include "routes.php";
+$page = null;
+$matchesParams = array();
 
 include "config.php";
 include "menu.php";

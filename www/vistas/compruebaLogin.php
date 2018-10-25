@@ -2,33 +2,28 @@
 
 $user = trim($_POST["user"]);
 $password = $_POST["password"];
+
 $md5 = md5($password);
-$archivo = fopen("ficheros/usuarios.txt", "r+");//Aqui meto el array de usuarios del txt
-$array = file("./ficheros/usuarios.txt");
-$tamanyo = sizeof($array);
-$i;
-$finalizado = false;
-for ($i = 0; $i < $tamanyo; $i++) {
-    $troceado = explode(";", $array[$i]);
-        if ($troceado[0] == $user && $troceado[1] == $md5) {
-            $i = $tamanyo;
-            $img = $troceado[2];
-            $_SESSION["avatar"] = $img;
-            setcookie("sesion", $img, time() + (86400 * 7), "/");
-            //sleep(5);
-            /*echo " <script language='javascript'>alert('Bienvenid@' . $troceado[$j]);</script>";*/
-            header("location: /");
-        } /*else {
-            //sleep(5);
-            echo "<script language='javascript'>alert('Error con el usuario o con la contraseña');</script>";
-            header("location: /error.php");
-        }*/
-    if (($i + 1) == $tamanyo) {
-        $finalizado = true;
-    }
+    //Comprobamos el usuario
+$sql = "SELECT id, password, avatar, COUNT(1) FROM usuarios  
+    WHERE nombreUsuario = :user LIMIT 1";
+$prepared_statement = $mysql->prepare($sql);
+$prepared_statement->bindParam(':user', $user, PDO::PARAM_STR);
+if (!$prepared_statement->execute()) {
+    $this->setError("Error al comprobar usuario registrado");
 }
-if ($finalizado == true) {
-    echo "<script language='javascript'>alert('Error con el usuario o con la contraseña');</script>";
-    header("location: /error.php");
+
+$respuesta = $prepared_statement->fetch(PDO::FETCH_NUM);
+if ($respuesta[3] === "0") {
+    echo "nombre de usuario no válido";
+}
+
+$passwordBBDD = $respuesta[1];
+
+if (md5($password, $passwordBBDD)) {//Y si no probar el md5
+    setcookie("sesion", $respuesta[0] . ";" . $respuesta[2], time() + (86400 * 7));
+    header("location:" . ROOT2);
+} else {
+    echo "Contraseña no válida";
 }
 ?>
