@@ -5,5 +5,6 @@
     DEFINE("ROOT","http://nba.test");
     DEFINE("ROOT2","/home/joseluis/www/nba");
     DEFINE("CSS","css/");
-    DEFINE("AVATARES", ROOT2 . DT . "avatares");
+    DEFINE("AVATARES", ROOT . "/" . "avatares");
+    DEFINE("AVATARES2", ROOT2 . "/" . "avatares");
 ?>

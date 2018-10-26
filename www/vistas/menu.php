@@ -23,8 +23,16 @@
 		<?php
 	if ($_SESSION['logeado']) {
 		?>
-		<li><img class='avatar' id='avatar' src="<?= AVATARES . DS . NOMBREAVATAR .
-		$_SESSION['id'] . "." . $_SESSION['extensionAvatar'] ?>"><!--Concateno el punto, ya que si se lo paso a pelo, no me funciona-->
+		<li><img class='avatar' id='avatar' src="<?= AVATARES . "/" .
+		$_SESSION['id']/* . "." . $_SESSION['extensionAvatar']*/ ?>"><!--Concateno el punto, ya que si se lo paso a pelo, no me funciona-->
+		<?php
+		/*echo "</br>";
+		echo "</br>";
+		echo "</br>";*/
+		echo "Id: " . $_SESSION['id'];
+		echo "avatar: " . $_SESSION['extensionAvatar'];
+		echo "HOLAAA";
+		?>
 		<li><a href='/formularioAvatar'>Configuracion</a></li>
 		<li><a href='/logout'>Logout</a></li>
 		</ul>

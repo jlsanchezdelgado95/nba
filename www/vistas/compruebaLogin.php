@@ -20,9 +20,9 @@ if ($respuesta[3] === "0") {
 
 $passwordBBDD = $respuesta[1];
 
-if (md5($password, $passwordBBDD)) {//Y si no probar el md5
+if (md5($password, $passwordBBDD)) {//Y si no probar el md5; Guardo la id y el avatar
     setcookie("sesion", $respuesta[0] . ";" . $respuesta[2], time() + (86400 * 7));
-    header("location:" . ROOT2);
+    header("location:" . "/");
 } else {
     echo "Contraseña no válida";
 }
