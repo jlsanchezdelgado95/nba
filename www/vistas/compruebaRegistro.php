@@ -18,9 +18,13 @@ if ($respuesta[0] == "1") {
     echo "nombre de usuario no válido";
 } else {
     $md5 = md5($password);
-    
+    for ($i=0; $i < $extensionAvatar.lenght; $i++) { 
+        echo $extensionAvatar[i] . "</br>";
+    }
+    echo "usuario: " . $user . " pass encriptada: " . $md5 . " extension: " . $extensionAvatar[0];
     $insert = $mysql->exec("INSERT INTO 'usuarios'('id', 'nombreUsuario', 'password', 'avatar')
-    VALUES (null,$user,$md5,$extensionAvatar)");
+    VALUES (null,$user,$md5,$extensionAvatar[1])");
+    echo "Se ha insertado";
     //header("location:" . "/");
 }
 
