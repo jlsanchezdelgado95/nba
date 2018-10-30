@@ -31,18 +31,16 @@
 		echo "</br>";*/
 		echo "Id: " . $_SESSION['id'];
 		echo "avatar: " . $_SESSION['extensionAvatar'];
-		echo "HOLAAA";
 		?>
 		<li><a href='/formularioAvatar'>Configuracion</a></li>
 		<li><a href='/logout'>Logout</a></li>
 		</ul>
 		</div>
 		<?php
-
 } else {
 	?>
-		<a href="/login"><div class="option" id="login">Login</div></a>
-    	<a href="/registrarse"><div class="option" id="login">Registrarse</div></a>
+		<li><a href="/login"><div class="option" id="login">Login</div></a></li>
+    	<li><a href="/registro"><div class="option" id="login">Registrarse</div></a></li>
 	<?php
 
 }

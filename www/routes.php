@@ -44,7 +44,15 @@ return array(
 		"cambiarAvatar" => array(
 			"route" => "/cambiarAvatar",
 			"page" => "cambiarAvatar.php"
-		),
+        ),
+        "registro" => array(
+            "route" => "/registro",
+            "page" => "registro.html"
+        ),
+        "compruebaRegistro" => array(
+            "route" => "/compruebaRegistro",
+            "page" => "compruebaRegistro.php"
+        ),
     ),
     "error" => "error.php"
 );

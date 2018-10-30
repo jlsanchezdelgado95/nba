@@ -1,28 +1,35 @@
 <?php
-
 $user = trim($_POST["user"]);
 $password = $_POST["password"];
-
-$md5 = md5($password);
+$imagen_usuario = $_POST["imagen_usuario"];
+$extensionAvatar = explode(".", $imagen_usuario);
+//$md5 = md5($password);
     //Comprobamos el usuario
-$sql = "SELECT id, password, avatar, COUNT(1) FROM usuarios  
-    WHERE nombreUsuario = '$user' LIMIT 1";
+$sql = "SELECT COUNT(*) FROM usuarios  
+    WHERE nombreUsuario = '$user'";
 $prepared_statement = $mysql->prepare($sql);
 if (!$prepared_statement->execute()) {
     $this->setError("Error al comprobar usuario registrado");
 }
 
 $respuesta = $prepared_statement->fetch(PDO::FETCH_NUM);
-if ($respuesta[3] === "0") {
+//var_dump($respuesta);
+if ($respuesta[0] == "1") {
     echo "nombre de usuario no válido";
+} else {
+    $md5 = md5($password);
+    
+    $insert = $mysql->exec("INSERT INTO 'usuarios'('id', 'nombreUsuario', 'password', 'avatar')
+    VALUES (null,$user,$md5,$extensionAvatar)");
+    //header("location:" . "/");
 }
 
-$passwordBBDD = $respuesta[1];
+/*$passwordBBDD = $respuesta[1];
 
 if ($md5 == $passwordBBDD) {//Y si no probar el md5; Guardo la id y el avatar
     setcookie("sesion", $respuesta[0] . ";" . $respuesta[2], time() + (86400 * 7));
     header("location:" . "/");
 } else {
     echo "Contraseña no válida";
-}
+}*/
 ?>
