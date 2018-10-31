@@ -2,16 +2,22 @@
 <html lang="en">
 
 <head>
+    <?php
+        include_once "menu.php";
+    ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <form enctype="multipart/form-data" action="compruebaRegistro" method="post">
+    </br>
+</br>
+</br>
         <p>Usuario: <input type="text" name="user" /></p>
         <p>Contraseña: <input type="password" name="password" /></p>
         <input type="hidden" name="MAX_FILE_SIZE" value="30000"/>
         Subir esta imagen: <input name="imagen_usuario" type="file"/>
-        <input type="submit" value="Subir imagen"/>
+        
         <p><input type="submit" value="Registrar"/></p>
     </form>
 </head>
