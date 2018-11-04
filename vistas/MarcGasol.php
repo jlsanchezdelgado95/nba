@@ -42,8 +42,6 @@ $sql = "SELECT * FROM `jugadores` WHERE Nombre = 'Marc Gasol'";
 $datos = $mysql->prepare($sql);
 $datos->execute();
 $datosImprimir = $datos->fetch();
-var_dump($datosImprimir);
-echo "</br> " . $datosImprimir[2];
 ?>
 <img src="<?= ROOT . DT . IMAGES . $datosImprimir[7] ?>">
 </br>
@@ -51,9 +49,11 @@ echo "</br> " . $datosImprimir[2];
 <img src="<?= ROOT . DT . IMAGES . "statsMarcGasol.png" ?>">
 </br>
 <h1 id="infoJugador">Informaci&oacuten</h1>
-    Procedencia: <?php echo $datosImprimir[2]; ?>
-    Altura: <?php echo $datosImprimir[3]?>
-    Peso: <?php echo $datosImprimir[4]?>
+    Procedencia: <?php echo $datosImprimir[2] . "</br>"; ?>
+    Altura: <?php echo $datosImprimir[3]. "</br>"?>
+    Peso: <?php echo $datosImprimir[4]. "</br>"?>
+    Posicion: <?php echo $datosImprimir[5]. "</br>"?>
+
 <!--<div id="contenedor">
 <div id="izquierda">
     Altura: 7ft 1 in / 2.16m </br>Nacimiento</br>Edad</br>Procedencia</br>Debut en la NBA</br>Años en la NBA</br>Equipos anteriores
@@ -63,11 +63,11 @@ echo "</br> " . $datosImprimir[2];
 </div>
 </div>-->
 </br>
-<!--<h2>Biografia del jugador</h2>
+<h2>Biografia del jugador</h2>
 <p id="Biografia">Marc Gasol Sáez (Barcelona, España, 29 de enero de 1985) es un jugador español de baloncesto, que juega en los Memphis Grizzlies de la NBA. Ocupa la posición de pívot.
 
 Es internacional absoluto con la selección española desde 2006 y con ella se ha proclamado campeón del Mundo en 2006, subcampeón olímpico en Pekín 2008 y Londres 2012 y dos veces campeón de Europa en 2009 y 2011. También ha sido subcampeón de Europa en 2007 y en el último Europeo de 2013 consiguió la medalla de Bronce. En 2013 fue elegido como mejor defensor de la NBA en esa temporada, además de aparecer en el segundo mejor quinteto defensivo y en el segundo mejor quinteto de la liga.1​
 
-Es hermano de Pau Gasol (n. 1980) y Adrià Gasol (n. 1993), ambos jugadores de baloncesto.</p>-->
+Es hermano de Pau Gasol (n. 1980) y Adrià Gasol (n. 1993), ambos jugadores de baloncesto.</p>
 </body>
 </html>
