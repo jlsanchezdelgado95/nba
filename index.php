@@ -15,7 +15,7 @@ function compruebaLogin(){
     if (isset($_COOKIE["sesion"])) {
         $usuario = explode(";", $_COOKIE["sesion"]);
         $_SESSION["id"] = $usuario[0];
-        $_SESSION["extensionAvatar"] = $usuario[2];//Me lo devuelve vacio, investigar que cojones es
+        $_SESSION["extensionAvatar"] = $usuario[1];//Me lo devuelve vacio, investigar que cojones es
         $_SESSION["logeado"] = true;
     } else {
         unset($_SESSION["usuario"]);

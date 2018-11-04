@@ -23,14 +23,17 @@
 		<?php
 	if ($_SESSION['logeado']) {
 		?>
-		<li><img class='avatar' id='avatar' src="<?= AVATARES . "/" .
-		$_SESSION['id']/* . "." . $_SESSION['extensionAvatar']*/ ?>"><!--Concateno el punto, ya que si se lo paso a pelo, no me funciona-->
+		<li><img class='avatar' id='avatar' src="<?= ROOT . "/avatares" . "/avatar" .
+		$_SESSION['id'] . "." . $_SESSION['extensionAvatar'] ?>"><!--Concateno el punto, ya que si se lo paso a pelo, no me funciona-->
 		<?php
-		/*echo "</br>";
-		echo "</br>";
-		echo "</br>";*/
+		/*$cookie_data = explode(';', $_COOKIE['sesion']);
+		var_dump($_COOKIE["sesion"]);
+    	//$nameUser = $cookie_data[0];
+		$avatarUser = $cookie_data[2];
+		echo "Extension: " . $avatarUser;
 		echo "Id: " . $_SESSION['id'];
 		echo "avatar: " . $_SESSION['extensionAvatar'];
+		echo var_dump($_SESSION);*/
 		?>
 		<li><a href='/formularioAvatar'>Configuracion</a></li>
 		<li><a href='/logout'>Logout</a></li>
