@@ -1,6 +1,6 @@
 ALTER TABLE `jugadores` ADD `foto` VARCHAR(60) NOT NULL AFTER `Nombre_equipo`;
 //Añadir a la BD que esta desactualizada
-INSERT INTO `jugadores` (`codigo`, `Nombre`, `Procedencia`, `Altura`, `Peso`, `Posicion`, `Nombre_equipo`, `foto`) VALUES ('800', 'Pau Gasol', 'Spain', '7-1', '255', 'C', 'Grizzlies', 'CabeceraMarcGasol.png');
+INSERT INTO `jugadores` (`codigo`, `Nombre`, `Procedencia`, `Altura`, `Peso`, `Posicion`, `Nombre_equipo`, `foto`) VALUES ('800', 'Marc Gasol', 'Spain', '7-1', '255', 'C', 'Grizzlies', 'CabeceraMarcGasol.png');
 INSERT INTO `jugadores` (`codigo`, `Nombre`, `Procedencia`, `Altura`, `Peso`, `Posicion`, `Nombre_equipo`, `foto`) VALUES ('801', 'Yuta Watanabe', 'Japanese', '6-9', '205', 'C', 'Grizzlies', 'CabeceraYutaWatanabe.png');
 INSERT INTO `jugadores` (`codigo`, `Nombre`, `Procedencia`, `Altura`, `Peso`, `Posicion`, `Nombre_equipo`, `foto`) VALUES ('802', 'Mario Chalmers', 'Alaska', '6-2', '189', 'G', 'Grizzlies', 'CabeceraMario.png');
 INSERT INTO `jugadores` (`codigo`, `Nombre`, `Procedencia`, `Altura`, `Peso`, `Posicion`, `Nombre_equipo`, `foto`) VALUES ('803', 'Dillon Brooks', 'Canada', '6-7', '224', 'G-F', 'Grizzlies', 'CabeceraDillonBrooks.png');
