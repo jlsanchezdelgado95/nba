@@ -35,6 +35,7 @@
 		echo "avatar: " . $_SESSION['extensionAvatar'];
 		echo var_dump($_SESSION);*/
 		?>
+		<li><a href='/partidos'>Partidos</a></li>
 		<li><a href='/formularioAvatar'>Configuracion</a></li>
 		<li><a href='/logout'>Logout</a></li>
 		</ul>

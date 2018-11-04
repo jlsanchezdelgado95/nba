@@ -53,6 +53,10 @@ return array(
             "route" => "/compruebaRegistro",
             "page" => "compruebaRegistro.php"
         ),
+        "partidos" => array(
+            "route" => "/partidos",
+            "page" => "/partidos.php"
+        ),
     ),
     "error" => "error.php"
 );
