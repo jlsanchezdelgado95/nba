@@ -6,12 +6,6 @@ $user = trim($_POST["user"]);
 $password = $_POST["password"];
 $imagen_usuario = $_FILES["imagen_usuario"]["name"];
 $extensionAvatar = explode(".", $imagen_usuario);
-//$md5 = md5($password);
-    //Comprobamos el usuario
-/*$sql = "SELECT COUNT(*) FROM usuarios  
-    WHERE nombreUsuario = '$user'";
-$prepared_statement = $mysql->prepare($sql);
-$respuesta = $prepared_statement->fetch(PDO::FETCH_NUM);*/
 $sql = "SELECT id, password, avatar, COUNT(1) FROM usuarios  
     WHERE nombreUsuario = '$user' LIMIT 1";
 $prepared_statement = $mysql->prepare($sql);
@@ -19,12 +13,6 @@ if (!$prepared_statement->execute()) {
     $this->setError("Error al comprobar usuario registrado");
 }
 $respuesta = $prepared_statement->fetch(PDO::FETCH_NUM);
-if ($respuesta[3] === "0") {
-    echo "nombre de usuario no válido";
-}
-//$prepared_statement->execute();
-//$respuesta = $prepared_statement->rowCount();
-//var_dump($respuesta);
 if($respuesta[3] == 0){
     //subimos el nuevo avatar del usuario
     //var_dump ($_FILES["imagen_usuario"]["tmp_name"]);
@@ -42,7 +30,7 @@ if($respuesta[3] == 0){
     $idUsuarioNuevo = $prepared_statementId->fetch(PDO::FETCH_NUM);
     echo "EL id del usuario nuevo es: " . $idUsuarioNuevo[0];
 
-    $directorio = AVATARES . "/avatar" . $idUsuarioNuevo[0] . ".png";
+    $directorio = AVATARES . "/avatar" . $idUsuarioNuevo[0] . "." . $extensionAvatar[1];
     if ($_FILES["imagen_usuario"]["type"] === "image/png") {
         if (move_uploaded_file($_FILES["imagen_usuario"]["tmp_name"], $directorio)) {
             //if (move_uploaded_file($nombreAvatar, $imagen)) {

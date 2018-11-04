@@ -27,11 +27,12 @@ include_once "menu.php";
 <select name="temporadaSeleccionada">
 <?php
 $sql = "SELECT DISTINCT temporada FROM partidos
-    WHERE equipo_local = 'Grizzlies' or equipo_visitante = 'Grizzlies'";
+    WHERE equipo_local = 'Grizzlies' or equipo_visitante = 'Grizzlies'";//Por si no han jugado alguna temporada
 foreach ($mysql->query($sql) as $row) {
     ?>
     <option value=<?= $row[0] ?>><?= $row[0] ?></option>
     <?php
+
 }
 echo '<input type="submit" name="temporada" value = "Mostrar">';
 ?>
@@ -49,32 +50,33 @@ echo '<input type="submit" name="temporada" value = "Mostrar">';
 <?php
 $temporada = $_POST['temporadaSeleccionada'];
 $sql = "SELECT codigo,equipo_local,equipo_visitante,puntos_local,puntos_visitante,temporada FROM partidos
-WHERE (equipo_local = 'Grizzlies' or equipo_visitante = 'Grizzlies') and temporada = $temporada";
+WHERE (equipo_local = 'Grizzlies' or equipo_visitante = 'Grizzlies') and temporada = '$temporada'";
 $datosPartidos = $mysql->prepare($sql);
-$datosPartidos->bindParam(":temporada",$temporada,PDO::PARAM_STR);
+$datosPartidos->bindParam(":temporada", $temporada, PDO::PARAM_STR);
 $datosPartidos->execute();
 $partidos = $datosPartidos->fetchAll();
 foreach ($partidos as $columna) {
     echo '<tr>';
     echo '<td>' . $columna[0] . '</td>';
-       echo '<td>' . $columna[1] . '</td>';
-       echo '<td>' . $columna[2] . '</td>';
-       echo '<td>' . $columna[3] . '</td>';
-       echo '<td>' . $columna[4] . '</td>';
-       echo '<td>' . $columna[5] . '</td>';
-       echo '</tr>';
-       ?>
+    echo '<td>' . $columna[1] . '</td>';
+    echo '<td>' . $columna[2] . '</td>';
+    echo '<td>' . $columna[3] . '</td>';
+    echo '<td>' . $columna[4] . '</td>';
+    echo '<td>' . $columna[5] . '</td>';
+    echo '</tr>';
+    ?>
     <!--
 <tr>
 
-    <td><?php echo $columna[0]?></td>
-    <td><?php echo $columna[1]?></td>
-    <td><?php echo $columna[2]?></td>
-    <td><?php echo $columna[3]?></td>
-    <td><?php echo $columna[4]?></td>
-    <td><?php echo $columna[5]?></td>
+    <td><?php echo $columna[0] ?></td>
+    <td><?php echo $columna[1] ?></td>
+    <td><?php echo $columna[2] ?></td>
+    <td><?php echo $columna[3] ?></td>
+    <td><?php echo $columna[4] ?></td>
+    <td><?php echo $columna[5] ?></td>
 </tr>-->
 <?php
+
 }
 ?>
 </table>
