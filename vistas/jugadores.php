@@ -16,16 +16,4 @@ switch ($idjugador) {
         include_once "DillonBrooks.php";
         break;
 }
-/*if ($params["idjugador"] == 1) {
-    include_once "MarcGasol.php";
-}
-if ($params["idjugador"] == 2) {
-    include_once "YutaWatanabe.php";
-}
-if ($params["idjugador"] == 3) {
-    include_once "MarioCharlmers.php";
-}
-if ($params["idjugador"] == 4) {
-    include_once "DillonBrooks.php";
-}*/
 ?>

@@ -57,6 +57,10 @@ return array(
             "route" => "/partidos",
             "page" => "/partidos.php"
         ),
+        "noticias" => array(
+            "route" => "/noticias/:idnoticia",
+            "page" => "noticias.php"
+        ),
     ),
     "error" => "error.php"
 );

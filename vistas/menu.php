@@ -20,6 +20,13 @@
 		</ul>
 		</li>
 		<li><a href='/historia'>Historia</a></li>
+		<li><a href=''>Noticias</a>
+		<ul>
+		<li><a href='/noticias/1'>Noticia 1</a></li>
+		<li><a href='/noticias/2'>Noticia 2</a></li>
+		<li><a href='/noticias/3'>Noticia 3</a></li>
+		<li><a href='/noticias/4'>Noticia 4</a></li>
+		</ul></li>
 		<?php
 	if ($_SESSION['logeado']) {
 		?>
