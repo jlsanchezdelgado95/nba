@@ -24,6 +24,12 @@ switch ($idnoticia) {
             echo "<h1>" . $row[1] . "</h1>";
             echo "<p>" . $row[2] . "</p>";
         }
+        $sqlComentario = "SELECT `idUsuario`, `comentario` FROM `comentarios` WHERE id = '1'";
+        foreach ($mysql->query($sqlComentario) as $row) {
+            echo "<h1>" . $row[0] . "</h1>";
+            echo "<p>" . $row[1] . "</p>";
+        }
+        $_SESSION["noticia"] = 1;
         break;
     case 2:
         $sql = "SELECT * FROM `noticias` WHERE id = $idnoticia";
@@ -31,6 +37,11 @@ switch ($idnoticia) {
             echo "<h1>" . $row[1] . "</h1>";
             echo "<p>" . $row[2] . "</p>";
         }
+        foreach ($mysql->query($sqlComentario) as $row) {
+            echo "<h1>" . $row[0] . "</h1>";
+            echo "<p>" . $row[1] . "</p>";
+        }
+        $_SESSION["noticia"] = 2;
         break;
     case 3:
         $sql = "SELECT * FROM `noticias` WHERE id = $idnoticia";
@@ -38,6 +49,11 @@ switch ($idnoticia) {
             echo "<h1>" . $row[1] . "</h1>";
             echo "<p>" . $row[2] . "</p>";
         }
+        foreach ($mysql->query($sqlComentario) as $row) {
+            echo "<h1>" . $row[0] . "</h1>";
+            echo "<p>" . $row[1] . "</p>";
+        }
+        $_SESSION["noticia"] = 3;
         break;
     case 4:
         $sql = "SELECT * FROM `noticias` WHERE id = $idnoticia";
@@ -45,12 +61,16 @@ switch ($idnoticia) {
             echo "<h1>" . $row[1] . "</h1>";
             echo "<p>" . $row[2] . "</p>";
         }
+        foreach ($mysql->query(sqlComentario) as $row) {
+            echo "<h1>" . $row[0] . "</h1>";
+            echo "<p>" . $row[1] . "</p>";
+        }
+        $_SESSION["noticia"] = 4;
         break;
 }
 ?>
-        <form action="/action_page.php" id="comentario">
-  <input type="textarea" name="comentario">
-  <textarea name="comment" form="usrform">Enter text here...</textarea>
+        <form action="/enviarComentario" method="POST">
+  <textarea name="comentario" form="usrform">200 caracteres</textarea>
   <input type="submit">
 </form>
 </body>

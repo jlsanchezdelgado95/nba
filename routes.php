@@ -61,6 +61,10 @@ return array(
             "route" => "/noticias/:idnoticia",
             "page" => "noticias.php"
         ),
+        "enviarComentario" => array(
+            "route" => "/enviarComentario",
+            "page" => "enviarComentario.php"
+        ),
     ),
     "error" => "error.php"
 );
