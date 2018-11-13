@@ -13,8 +13,7 @@ ul, ol {
     list-style:none;
 }
 
-.nav {
-    width:500px; /*Le establecemos un ancho*/
+.nav{
     margin:0 auto; /*Centramos automaticamente*/
 }
 
