@@ -14,25 +14,21 @@ if (!$prepared_statement->execute()) {
 }
 $respuesta = $prepared_statement->fetch(PDO::FETCH_NUM);
 if($respuesta[3] == 0){
-    //subimos el nuevo avatar del usuario
-    //var_dump ($_FILES["imagen_usuario"]["tmp_name"]);
-    //le quito la última letra porque inserta un carácter extraño al final
-    //$imagen = substr($directorio . $imagen_usuario, 0, -1);
     $md5 = md5($password);
-    echo "usuario: " . $user . " pass encriptada: " . $md5 . " extension: " . $extensionAvatar[1];
     $sqlInsert = "INSERT INTO usuarios(id, nombreUsuario, password, avatar)
     VALUES (null,'$user','$md5','$extensionAvatar[1]')";
     $insert = $mysql->prepare($sqlInsert);
     $insert->execute();
+
     $sqlIdUsuarioNuevo = "SELECT id FROM `usuarios` WHERE nombreUsuario = '$user'";
     $prepared_statementId = $mysql->prepare($sqlIdUsuarioNuevo);
     $prepared_statementId->execute();
     $idUsuarioNuevo = $prepared_statementId->fetch(PDO::FETCH_NUM);
     echo "EL id del usuario nuevo es: " . $idUsuarioNuevo[0];
-
-    $directorio = AVATARES . "/avatar" . $idUsuarioNuevo[0] . "." . $extensionAvatar[1];
+    $avatar = 'avatar' . $idUsuarioNuevo[0] . '.' . $extensionAvatar[1];
+    $directorio = "avatares/";
     if ($_FILES["imagen_usuario"]["type"] === "image/png") {
-        if (move_uploaded_file($_FILES["imagen_usuario"]["tmp_name"], $directorio)) {
+        if (move_uploaded_file($_FILES["imagen_usuario"]["tmp_name"], AVATARES2 . "/" . $avatar)) {
             //if (move_uploaded_file($nombreAvatar, $imagen)) {
             echo "El fichero se ha subido con éxito";
         } else {
@@ -44,10 +40,10 @@ if($respuesta[3] == 0){
         echo "Formato de fichero incorrecto";
     }
     echo "Se ha insertado";
-    header("location:" . "/");
+    //header("location:" . "/");
 } else {
     echo "Nombre de usuario en uso";
-    header("location:" . "/");
+    //header("location:" . "/");
 }
 
 /*$passwordBBDD = $respuesta[1];

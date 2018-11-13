@@ -30,13 +30,14 @@
 		<?php
 	if ($_SESSION['logeado']) {
 		?>
-		<li><img class='avatar' id='avatar' src="<?= ROOT . "/avatares" . "/avatar" .
+		<li><img class='avatar' id='avatar' src="<?= AVATARES . "/" . NOMBREAVATAR  .
 		$_SESSION['id'] . "." . $_SESSION['extensionAvatar'] ?>"><!--Concateno el punto, ya que si se lo paso a pelo, no me funciona-->
 		<?php
+		//echo AVATARES . "/" . NOMBREAVATAR . $_SESSION['id'] . "." . $_SESSION['extensionAvatar'];
 		/*$cookie_data = explode(';', $_COOKIE['sesion']);
 		var_dump($_COOKIE["sesion"]);
-    	//$nameUser = $cookie_data[0];
-		$avatarUser = $cookie_data[2];
+    	$nameUser = $cookie_data[0];
+		$avatarUser = $cookie_data[1];
 		echo "Extension: " . $avatarUser;
 		echo "Id: " . $_SESSION['id'];
 		echo "avatar: " . $_SESSION['extensionAvatar'];

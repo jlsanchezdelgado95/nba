@@ -10,19 +10,48 @@
 <body>
     <?php
     include "menu.php";
-        //sacamos el nombre del usuario y el avatar de la cookie
+    ?>
+    </br>
+</br>
+</br></br>
+</br>
+    <?php
+        //sacamos el nombre del usuario y la extension del cookie
     $cookie_data = explode(';', $_COOKIE['sesion']);
-    $nameUser = $cookie_data[0];
-    $avatarUser = $cookie_data[2];
-    echo $avatarUser;
-    //subimos el nuevo avatar del usuario
-    $directorio = AVATARES . "/";
+    $idUser = $cookie_data[0];
+    $avatarUser = $cookie_data[1];
+    $directorio = "avatares/";
     //le quito la última letra porque inserta un carácter extraño al final
-    $imagen = substr($directorio . $avatarUser, 0, -1);
-    //echo $imagen;
-    if ($_FILES["avatar"]["type"] == "image/png") {
-        if (move_uploaded_file($_FILES["avatar"]["tmp_name"], $imagen)) {
-            //if (move_uploaded_file($nombreAvatar, $imagen)) {
+    //$imagen = substr($directorio . $avatarUser, 0, -1);
+    $extension = end(explode(".", $_FILES['imagen_usuario']['name']));
+    try{
+        $sql = 'UPDATE usuarios SET avatar = :extension WHERE id=:idUsuario'; 
+        $ps = $mysql->prepare($sql);
+        $ps->bindParam(':extension', $extension, PDO::PARAM_STR);
+        $ps->bindParam(':idUsuario', $idUser, PDO::PARAM_INT);
+        $ps->execute();
+        //borrar los demas avatares
+        array_map('unlink', glob(AVATARES . DS . NOMBREAVATAR . $idUser . ".*"));
+        //subir el avatar del usuario
+        $avatar = 'avatar' . $idUser . '.' . $extension;
+        echo $avatar;
+        if(move_uploaded_file($_FILES["imagen_usuario"]["tmp_name"],AVATARES2 . "/" . $avatar)){
+            echo "SE HA SUBIDO";
+        } else {
+            echo "NO SE SUBE";
+        }
+        //print_r($_FILES);
+        //actualizar la cookie
+        setcookie("sesion", $idUser . ";" . $extension,  time() + (86400 * 7));
+    }
+    catch (\PDOException $e)  {
+        echo $e->getCode();
+    }
+
+    //header("location:" . ROOT);
+    /*
+    if ($_FILES["imagen_usuario"]["type"] == "image/png") {
+        if (move_uploaded_file($_FILES["imagen_usuario"]["tmp_name"], $directorio)) {
             echo "El fichero se ha subido con éxito";
         } else {
             echo "Error en la subida de fichero";
@@ -31,27 +60,7 @@
         print_r($_FILES);
     } else {
         echo "Formato de fichero incorrecto";
-    }
-
-    header("location:" . "/");
-        /*Hecho anteriormente*/
-    /*$dir_subida = AVATARES . DT;
-    var_dump("Direccion subida " . $dir_subida);
-    $imagen_subida = $dir_subida . basename($_FILES['imagen_usuario']['name']);
-    echo "</br>";
-    $avatar = $_COOKIE["sesion"];
-    var_dump($_COOKIE["sesion"]);
-    $cortado = substr($avatar, 0, -1);
-    $nombreAnterior = $dir_subida . $cortado;
-    echo "OK: " . $nombreAnterior;
-    if (move_uploaded_file($_FILES['imagen_usuario']['tmp_name'], $nombreAnterior)) {
-        echo "Se ha subido correctamente";
-        //header("location: /");
-        //setcookie("sesion", $img, time() + (86400 * 7), "/");
-    } else {
-        echo "No se ha podido subir";
     }*/
-
     ?>
     
 </body>
