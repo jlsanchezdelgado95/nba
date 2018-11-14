@@ -31,7 +31,7 @@
 	if ($_SESSION['logeado']) {
 		?>
 		<li><img class='avatar' id='avatar' src="<?= AVATARES . "/" . NOMBREAVATAR  .
-		$_SESSION['id'] . "." . $_SESSION['extensionAvatar'] ?>"><!--Concateno el punto, ya que si se lo paso a pelo, no me funciona-->
+		$_SESSION['id'] . "." . $_SESSION['extensionAvatar'] . "?v=XQ" ?>"><!--Concateno el punto, ya que si se lo paso a pelo, no me funciona-->
 		<?php
 		//echo AVATARES . "/" . NOMBREAVATAR . $_SESSION['id'] . "." . $_SESSION['extensionAvatar'];
 		/*$cookie_data = explode(';', $_COOKIE['sesion']);
