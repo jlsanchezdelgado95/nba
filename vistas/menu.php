@@ -1,5 +1,9 @@
 <html>
     <head>
+	<meta http-equiv="Expires" content="0">
+  <meta http-equiv="Last-Modified" content="0">
+  <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+  <meta http-equiv="Pragma" content="no-cache">
 		<link rel="stylesheet" type="text/css" href="<?= ROOT . DT . CSS . "estiloMenu.css" ?>">
 		<style>
 			#avatar{
@@ -30,25 +34,16 @@
 		<?php
 	if ($_SESSION['logeado']) {
 		?>
-		<li><img class='avatar' id='avatar' src="<?= AVATARES . "/" . NOMBREAVATAR  .
-		$_SESSION['id'] . "." . $_SESSION['extensionAvatar'] . "?v=XQ" ?>"><!--Concateno el punto, ya que si se lo paso a pelo, no me funciona-->
-		<?php
-		//echo AVATARES . "/" . NOMBREAVATAR . $_SESSION['id'] . "." . $_SESSION['extensionAvatar'];
-		/*$cookie_data = explode(';', $_COOKIE['sesion']);
-		var_dump($_COOKIE["sesion"]);
-    	$nameUser = $cookie_data[0];
-		$avatarUser = $cookie_data[1];
-		echo "Extension: " . $avatarUser;
-		echo "Id: " . $_SESSION['id'];
-		echo "avatar: " . $_SESSION['extensionAvatar'];
-		echo var_dump($_SESSION);*/
-		?>
+		<li><img class='avatar' id='avatar' src="<?= AVATARES . "/" . NOMBREAVATAR .
+		$_SESSION['id'] . "." . $_SESSION['extensionAvatar'] . "?v=1" ?>">
+		<!--Concateno el punto, ya que si se lo paso a pelo, no me funciona-->
 		<li><a href='/partidos'>Partidos</a></li>
 		<li><a href='/formularioAvatar'>Configuracion</a></li>
 		<li><a href='/logout'>Logout</a></li>
 		</ul>
 		</div>
 		<?php
+
 } else {
 	?>
 		<li><a href="/login"><div class="option" id="login">Login</div></a></li>

@@ -16,7 +16,8 @@
 </br>
 </br>
 </br>
-        Subir esta imagen: <input name="imagen_usuario" type="file"/>
+        Subir esta imagen: <input name="imagen_usuario" type="file" accept="image/*">
+        <input type="hidden" name="csrf" value="<?php echo $_SESSION["token"];?>">
         <input type="submit" value="Subir imagen"/>
         </form>
     </div>

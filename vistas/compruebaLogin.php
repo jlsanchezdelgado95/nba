@@ -5,6 +5,9 @@ $password = $_POST["password"];
 
 $md5 = md5($password);
     //Comprobamos el usuario
+    //Creamos el token para identificar la sesion logeada
+    $_SESSION["token"] = md5(uniqid(mt_rand(),true));
+    //De esta forma le damos un valor unico al token, y le ponemos el boolean a true;
 $sql = "SELECT id, password, avatar, COUNT(1) FROM usuarios  
     WHERE nombreUsuario = '$user' LIMIT 1";
     foreach ($mysql->query($sql) as $row) {

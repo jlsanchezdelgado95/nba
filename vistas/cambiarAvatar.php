@@ -24,8 +24,8 @@
     //le quito la última letra porque inserta un carácter extraño al final
     //$imagen = substr($directorio . $avatarUser, 0, -1);
     $extension = end(explode(".", $_FILES['imagen_usuario']['name']));
-    try{
-        $sql = 'UPDATE usuarios SET avatar = :extension WHERE id=:idUsuario'; 
+    try {
+        $sql = 'UPDATE usuarios SET avatar = :extension WHERE id=:idUsuario';
         $ps = $mysql->prepare($sql);
         $ps->bindParam(':extension', $extension, PDO::PARAM_STR);
         $ps->bindParam(':idUsuario', $idUser, PDO::PARAM_INT);
@@ -35,16 +35,18 @@
         //subir el avatar del usuario
         $avatar = 'avatar' . $idUser . '.' . $extension;
         echo $avatar;
-        if(move_uploaded_file($_FILES["imagen_usuario"]["tmp_name"],AVATARES2 . "/" . $avatar)){
-            echo "SE HA SUBIDO";
-        } else {
-            echo "NO SE SUBE";
+        if (is_uploaded_file($_FILES["imagen_usuario"]["tmp_name"])) {
+            if (move_uploaded_file($_FILES["imagen_usuario"]["tmp_name"], AVATARES2 . "/" . $avatar)) {
+                echo "SE HA SUBIDO";
+            } else {
+                echo "NO SE SUBE";
+            }
         }
+        
         //print_r($_FILES);
         //actualizar la cookie
-        setcookie("sesion", $idUser . ";" . $extension,  time() + (86400 * 7));
-    }
-    catch (\PDOException $e)  {
+        setcookie("sesion", $idUser . ";" . $extension, time() + (86400 * 7));
+    } catch (\PDOException $e) {
         echo $e->getCode();
     }
 
